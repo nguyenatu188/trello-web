@@ -26,7 +26,7 @@ function ModeSelect() {
         label="Mode"
         onChange={handleChange}
       >
-        <MenuItem value="light">
+        <MenuItem value="light" sx={{ minWidth: '120px' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <LightModeIcon fontSize="small" /> Light
           </Box>
