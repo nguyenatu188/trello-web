@@ -17,6 +17,10 @@ import AddCardIcon from '@mui/icons-material/AddCard'
 import Button from '@mui/material/Button'
 import DragHandleIcon from '@mui/icons-material/DragHandle'
 import { Card, CardActions, CardContent, CardMedia } from '@mui/material'
+import GroupIcon from '@mui/icons-material/Group'
+import CommentIcon from '@mui/icons-material/Comment'
+import AttachmentIcon from '@mui/icons-material/Attachment'
+
 
 const COLUMN_HEADER_HEIGHT = '50px'
 const COLUMN_FOOTER_HEIGHT = '50px'
@@ -39,7 +43,8 @@ function BoardContent() {
         bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#333643' : '#ebecf0'),
         ml: 2,
         borderRadius: '6px',
-
+        height: 'fit-content',
+        maxHeight: (theme) => `calc(${theme.trello.boardContentHeight} - ${theme.spacing(5)})`
       }}>
         <Box sx={{
           height: COLUMN_HEADER_HEIGHT,
@@ -104,31 +109,40 @@ function BoardContent() {
         </Box>
 
         <Box sx={{
+          p: 2,
           display: 'flex',
-          flexDirection: 'column'
+          flexDirection: 'column',
+          gap: 1,
+          overflowX: 'hidden',
+          overflowY: 'auto',
+          maxHeight: (theme) => `calc(${theme.trello.boardContentHeight} - ${theme.spacing(5)} - ${COLUMN_HEADER_HEIGHT} -
+          ${COLUMN_FOOTER_HEIGHT})`
         }}>
           <Card sx={{
             cursor: 'pointer',
-            
+            boxShadow: '0 1px 1px rgba(0, 0, 0, 0.2)'
           }}>
             <CardMedia
               sx={{ height: 140 }}
               image="https://images8.alphacoders.com/736/736059.png"
               title="green iguana"
             />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Lizard
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
-              </Typography>
+            <CardContent sx={{ p: 1.5, '&:last-child': { p: 1.5 } }}>
+              <Typography>Natu</Typography>
             </CardContent>
-            <CardActions>
-              <Button size="small">Share</Button>
-              <Button size="small">Learn More</Button>
+            <CardActions sx={{ p: '0 4px 8px 4px' }}>
+              <Button size="small" startIcon={<GroupIcon />}>20</Button>
+              <Button size="small" startIcon={<CommentIcon />}>15</Button>
+              <Button size="small" startIcon={<AttachmentIcon />}>69</Button>
             </CardActions>
+          </Card>
+          <Card sx={{
+            cursor: 'pointer',
+            boxShadow: '0 1px 1px rgba(0, 0, 0, 0.2)'
+          }}>
+            <CardContent sx={{ p: 1.5, '&:last-child': { p: 1.5 } }}>
+              <Typography>Card 01</Typography>
+            </CardContent>
           </Card>
         </Box>
 
